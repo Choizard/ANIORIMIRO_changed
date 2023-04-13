@@ -2,10 +2,11 @@
 
 import pandas as pd
 import numpy as np
+import os
 import warnings
 warnings.filterwarnings(action='ignore')# 경고출력안하기
 import scipy.stats as stats
-# from sklearn.preprocessing import LabelEncoder   
+# from sklearn.preprocessing import LabelEncoder
 import statsmodels.formula.api as smf
 
 pd.options.display.float_format = '{:.5f}'.format
@@ -15,7 +16,21 @@ pd.set_option('display.max_columns', None)
 from django.shortcuts import render
 from django.http import JsonResponse
 
+# static 폴더에서 경로 불러오기
+gol_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..','static', 'mydata', 'data','용산구 골목상권(거리두기 추가).csv')
+bal_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..','static', 'mydata', 'data','용산구 발달상권(거리두기 추가).csv')
+jeon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..','static', 'mydata', 'data','용산구 전통시장(거리두기 추가).csv')
+cul_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..','static', 'mydata', 'data','용산구 관광특구(거리두기 추가).csv')
+
+gol_df = pd.read_csv(gol_path)
+bal_df= pd.read_csv(bal_path)
+jeon_df= pd.read_csv(jeon_path)
+cul_df= pd.read_csv(cul_path)
+
+mdata = pd.concat([gol_df, bal_df, jeon_df, cul_df], axis=0)
+
 def map(request):
+
   return render(request, 'analysis/map.html')
 
 def calldbFunc(request):
@@ -38,7 +53,8 @@ def calldbFunc(request):
         ###################   예측 predict data   ###################
         # tradingArea,smallBusiType를 받는 predict 함수 호출
         # 상권마다 모델이 다르다. 해당 상권에 변수에 맞춰 새로운 예측변수를 가져온다.
-        mdata=pd.read_csv("https://raw.githubusercontent.com/Kshinhye/aniorimiroDATA/master/yongsan2021.csv")
+        
+        global mdata
 
         if BigTradingArea == "골목상권":
             pdata=golpredx(tradingArea,smallBusiType) 
