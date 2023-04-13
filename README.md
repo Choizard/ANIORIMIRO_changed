@@ -2,7 +2,7 @@
 
 1. 테스트 코드 프로젝트 외부에 .py파일로 추가, static/mydata/ 경로에 참고했던 데이터들 추가
 
-2. views.py 코드 간결화
+2. views.py 코드 간결화 (과정에서 report data가 안넘어오는 에러 발견)
 
 3. 깃헙에서 raw data를 받아오던 것을 static/mydata/data 디렉토리에 저장된 파일을 불러오는 것으로 변경
 
