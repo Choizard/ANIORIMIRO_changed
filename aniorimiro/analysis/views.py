@@ -16,15 +16,17 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 
+
+
 # static 폴더에서 경로 불러오기
 gol_path = os.path.join(os.path.dirname(os.path.abspath(
-    __file__)), '..', 'static', 'mydata', 'data', '용산구 골목상권(거리두기 추가).csv')
+    __file__)), '..', 'static', 'analysis_data', 'data', '용산구 골목상권(거리두기 추가).csv')
 bal_path = os.path.join(os.path.dirname(os.path.abspath(
-    __file__)), '..', 'static', 'mydata', 'data', '용산구 발달상권(거리두기 추가).csv')
+    __file__)), '..', 'static', 'analysis_data', 'data', '용산구 발달상권(거리두기 추가).csv')
 jeon_path = os.path.join(os.path.dirname(os.path.abspath(
-    __file__)), '..', 'static', 'mydata', 'data', '용산구 전통시장(거리두기 추가).csv')
+    __file__)), '..', 'static', 'analysis_data', 'data', '용산구 전통시장(거리두기 추가).csv')
 cul_path = os.path.join(os.path.dirname(os.path.abspath(
-    __file__)), '..', 'static', 'mydata', 'data', '용산구 관광특구(거리두기 추가).csv')
+    __file__)), '..', 'static', 'analysis_data', 'data', '용산구 관광특구(거리두기 추가).csv')
 
 gol_df = pd.read_csv(gol_path)
 bal_df = pd.read_csv(bal_path)
@@ -33,7 +35,6 @@ cul_df = pd.read_csv(cul_path)
 
 # 19~21년 용산구 매출 데이터 통합본
 yongsan_data = pd.concat([gol_df, bal_df, jeon_df, cul_df], axis=0)
-
 
 def map(request):
 
@@ -194,7 +195,6 @@ def report(BigTradingArea, tradingArea, smallBusiType):
     # 점포수, 
     return jumpo, gender, time
 
-
 def bal_variables(tradingArea, smallBusiType):
 
     # 19~21년 용산구 매출 데이터 통합본
@@ -234,7 +234,6 @@ def bal_variables(tradingArea, smallBusiType):
         return predictdata
     else:
         return pd.DataFrame()
-
 
 def gol_variables(tradingArea, smallBusiType):
 
@@ -316,7 +315,6 @@ def jeon_variables(tradingArea, smallBusiType):
         return predictdata
     else:
         return pd.DataFrame()
-
 
 def cul_variables(tradingArea, smallBusiType):
 

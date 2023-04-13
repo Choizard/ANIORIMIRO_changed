@@ -59,5 +59,4 @@ def Sell2017():
     # 서울 상권 매출 csv로 저장
     df.to_csv('C:/Users/체자드/Desktop/사이드 프로젝트/Django/airproject/airproject/airapp/static/data/seoulSell2017.csv', index=False)
 
-
 Sell2017()

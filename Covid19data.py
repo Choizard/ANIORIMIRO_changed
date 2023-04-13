@@ -40,6 +40,7 @@ covid = covid.sort_values(['자치구 기준일'], axis=0)
 print(covid.describe())
 
 
+# 추세 시각화 (log함수 on/off)
 def plot_subplot(ax, x, y, title, label, plot_type, color):
     if plot_type == 'bar':
         ax.bar(x, y, label=label, color=color)
@@ -48,7 +49,8 @@ def plot_subplot(ax, x, y, title, label, plot_type, color):
 
     ax.set_title(title)
     ax.legend(loc='upper left')
-    # 로그 적용
+
+    # log함수 적용
     # ax.set_yscale('log')
     ax.set_xticks(x[::len(x)//11])
     ax.set_xticklabels(x_labels[::len(x_labels)//11], rotation=45)
