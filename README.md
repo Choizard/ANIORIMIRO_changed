@@ -1,4 +1,4 @@
-ANIORIMIRO 프로젝트 발표 후 개인 수정
+# ANIORIMIRO 프로젝트 발표 후 개인 수정
 
 
 
