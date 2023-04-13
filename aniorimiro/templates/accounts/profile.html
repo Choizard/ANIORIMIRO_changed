@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>아이디 : {{ user }}</h2>
+
+  {% if user %}
+    <ul>
+      <li>이메일 : {{user.email}}</li>
+      <li>영문 이름 : {{user.first_name}}</li>
+      <li>영문 성 : {{user.last_name}}</li>
+    </ul>
+  {% endif %}
+
+  <a href="{% url 'update' %}" class="btn btn-primary">
+    프로필 수정
+  </a>
+  <a href="{% url 'index' %}">홈으로</a>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="account-page">
+  <a class="logo" href="{% url 'index' %}">ANIORIMIRO</a>
+    {% if form.errors %}
+    <div style="color:#f3f3f3;">아이디, 비밀번호가 일치하지 않습니다. 다시 시도해주세요.</div>
+    {% endif %}
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <div class="signin-container">
+        <div class="account-box" type="text">{{ form.username }}</div>
+    </div>
+
+    <div class="signin-container">
+        <div class="account-box" type="text">{{ form.password }}</div>
+    </div>
+
+  
+    <div style="text-align: center;">
+      <button class="login-btn" type="submit"> Log in </button>
+      <input type="hidden" name="next" value="{{ next }}">
+    </div>
+    <div class="btn-etc">
+      <a href="/">뒤로가기</a>
+      <a href="#">아이디 찾기</a>
+      <a href="#">비밀번호 찾기</a>
+      <a href="{% url 'signup' %}">회원 가입</a>
+    </div>
+    </form>
+</div>
+{% endblock content %}
+
